@@ -293,14 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
 const searchBook = () => {
   const searchInput = document.getElementById("pencarian").value.toLowerCase();
   const bookItems = document.getElementsByClassName("item");
-  const searchResults = document.getElementById("searchResults");
-
-  searchResults.innerHTML = ""; // Clear previous results
 
   for (let i = 0; i < bookItems.length; i++) {
     const itemTitle = bookItems[i].querySelector(".item-title");
     if (itemTitle.textContent.toLowerCase().includes(searchInput)) {
-      searchResults.appendChild(bookItems[i].cloneNode(true));
+      bookItems[i].classList.remove("hidden");
+    } else {
+      bookItems[i].classList.add("hidden");
     }
   }
 };
+
